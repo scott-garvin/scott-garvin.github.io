@@ -125,6 +125,18 @@
   .result p{color:var(--ink);font-size:15.5px;line-height:1.55;max-width:60ch}
   @media(max-width:620px){.result{flex-direction:column;gap:8px}}
 
+  /* ---- live demos ---- */
+  .demolede{margin-top:-20px;margin-bottom:32px;font-size:15.5px}
+  .demos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:720px){.demos{grid-template-columns:1fr}}
+  .demo{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:26px 24px;display:flex;flex-direction:column}
+  .demo .eyebrow{font-size:11.5px;color:var(--gold)}
+  .demo h3{font-size:20px;font-weight:700;color:var(--ink);margin:12px 0 10px}
+  .demo p{font-size:14.5px;color:var(--muted);line-height:1.55;flex:1}
+  .demo .links{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+  .btn.sm{font-size:13px;padding:9px 15px}
+
   /* ---- stack ---- */
   .stackgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 40px}
   @media(max-width:620px){.stackgrid{grid-template-columns:1fr}}
@@ -243,6 +255,54 @@
         <p>The rule in every skill: when something can't be verified from the artifact itself, say "can't determine — review this," never a confident guess. That's what makes AI safe in a serious domain.</p>
       </div>
     </article>
+  </div>
+</section>
+
+<section aria-label="Live demos">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>Live demos</h2></div>
+    <p class="lede demolede reveal">Public, self-contained demos you can click straight through — no signup, sample data only. Built solo, front-to-back.</p>
+    <div class="demos reveal">
+
+      <article class="demo">
+        <p class="eyebrow">Healthcare · Vue 3 + TypeScript</p>
+        <h3>Clera — clinic check-in</h3>
+        <p>A staff scheduling board and a patient self-check-in kiosk as one connected product: live search, sortable columns, pagination, a patient-detail drawer with visit timeline, and status that updates the moment a patient checks in at the kiosk.</p>
+        <div class="links">
+          <a class="btn primary sm" href="https://scott-garvin.github.io/clinic-scheduler/" target="_blank" rel="noopener">Open demo <span class="arrow">→</span></a>
+          <a class="btn ghost sm" href="https://github.com/scott-garvin/clinic-scheduler" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="demo">
+        <p class="eyebrow">Fintech / SMB · Vue 3 + TypeScript</p>
+        <h3>Ledgerly — invoicing dashboard</h3>
+        <p>An admin dashboard for a small business's receivables: headline KPIs, a monthly collections chart, and invoice and client management — the everyday operational surface, built to feel real.</p>
+        <div class="links">
+          <a class="btn primary sm" href="https://scott-garvin.github.io/invoice-dashboard/" target="_blank" rel="noopener">Open demo <span class="arrow">→</span></a>
+          <a class="btn ghost sm" href="https://github.com/scott-garvin/invoice-dashboard" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="demo">
+        <p class="eyebrow">Security · Node / TypeScript + Postgres</p>
+        <h3>Invoice API — before / after hardening</h3>
+        <p>A deliberately vulnerable MVP API paired with its hardened rewrite: tenant isolation via Postgres row-level security, strict input validation against mass-assignment, and a full test suite running green in CI.</p>
+        <div class="links">
+          <a class="btn ghost sm" href="https://github.com/scott-garvin/invoice-api-hardening" target="_blank" rel="noopener">Code + tests <span class="arrow">→</span></a>
+        </div>
+      </article>
+
+      <article class="demo">
+        <p class="eyebrow">AI-native · Claude Code</p>
+        <h3>Claude Code guardrails</h3>
+        <p>Open-source, reusable Claude Code skills that keep AI agents honest on production systems — verify-before-claim, human-gated production writes, paired forward/reverse migrations, and release cutover.</p>
+        <div class="links">
+          <a class="btn ghost sm" href="https://github.com/scott-garvin/claude-code-guardrails" target="_blank" rel="noopener">View on GitHub <span class="arrow">→</span></a>
+        </div>
+      </article>
+
+    </div>
   </div>
 </section>
 
