@@ -1,409 +1,492 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="description" content="Scott Garvin, senior full-stack engineer (.NET, React/Vue, Azure). AI-built app rescue, production hardening, and modernization in regulated domains.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128296;</text></svg>">
-<title>Scott Garvin — Full-Stack Engineer</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-
-<style>
-  /* ---- Committed dark identity: matches Scott's brand (intro video / portfolio graphics).
-         All colors painted explicitly so the page holds on any host ground. ---- */
-  :root{
-    --bg:      #0d121d;
-    --bg-2:    #10182704;
-    --surface: #141d2e;
-    --surface-2:#18223500;
-    --line:    #26314b;
-    --line-soft:#1e2740;
-    --ink:     #eaeef7;
-    --muted:   #9fabc4;
-    --faint:   #6b7690;
-    --green:   #3ecf8e;
-    --green-dim:#2a3f39;
-    --gold:    #e0af68;
-    --measure: 66ch;
-    --pad: clamp(20px, 5vw, 44px);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    background:
-      radial-gradient(120% 80% at 50% -8%, #16203400 0%, rgba(22,32,52,0) 60%),
-      var(--bg);
-    color:var(--ink);
-    font-family:"IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size:17px; line-height:1.62;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-  }
-  ::selection{background:rgba(62,207,142,.24)}
-  a{color:inherit}
-  .wrap{max-width:940px;margin:0 auto;padding:0 var(--pad)}
-
-  /* ---- typographic system ---- */
-  .eyebrow{
-    font-family:"IBM Plex Mono", monospace;
-    font-size:12.5px; font-weight:500; letter-spacing:.18em; text-transform:uppercase;
-    color:var(--gold);
-  }
-  h1,h2,h3{font-family:"Archivo", sans-serif; text-wrap:balance; line-height:1.06; letter-spacing:-.02em}
-  .lede{color:var(--muted); max-width:var(--measure)}
-  .mono{font-family:"IBM Plex Mono", monospace}
-
-  /* ---- hero ---- */
-  header.hero{padding:clamp(64px,12vh,132px) 0 clamp(44px,8vh,84px)}
-  .brandline{display:flex;align-items:center;gap:14px;margin-bottom:clamp(38px,8vh,64px)}
-  .monogram{
-    width:40px;height:40px;flex:none;display:grid;place-items:center;
-    border:1px solid var(--line);border-radius:9px;
-    font-family:"Archivo";font-weight:800;font-size:16px;color:var(--green);
-    background:var(--surface);
-  }
-  .brandname{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.04em;color:var(--muted)}
-  header.hero h1{
-    font-size:clamp(33px, 6.2vw, 62px); font-weight:800; color:var(--ink);
-    max-width:16ch; margin-bottom:26px;
-  }
-  header.hero h1 .hl{color:var(--green)}
-  header.hero .lede{font-size:clamp(17px,2.1vw,20px)}
-  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
-  .btn{
-    display:inline-flex;align-items:center;gap:9px;
-    font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:500;letter-spacing:.01em;
-    padding:13px 20px;border-radius:10px;text-decoration:none;
-    transition:transform .15s ease, border-color .15s ease, background .15s ease;
-  }
-  .btn:focus-visible{outline:2px solid var(--green);outline-offset:3px}
-  .btn.primary{background:var(--green);color:#08130d;font-weight:500}
-  .btn.primary:hover{transform:translateY(-1px)}
-  .btn.ghost{border:1px solid var(--line);color:var(--ink)}
-  .btn.ghost:hover{border-color:var(--green);color:var(--green)}
-  .arrow{transition:transform .15s ease}
-  .btn:hover .arrow{transform:translateX(3px)}
-
-  /* ---- section rhythm ---- */
-  section{padding:clamp(40px,7vh,72px) 0}
-  .rule{height:1px;background:var(--line-soft);border:0}
-  .sec-head{margin-bottom:38px}
-  .sec-head h2{font-size:clamp(13px,1.6vw,14px);font-family:"IBM Plex Mono",monospace;font-weight:500;
-    letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
-
-  /* ---- value strip ---- */
-  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);
-    border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
-  .value{background:var(--bg);padding:26px 24px}
-  .value h3{font-size:19px;font-weight:700;color:var(--ink);margin-bottom:9px}
-  .value p{font-size:14.5px;color:var(--muted);line-height:1.55}
-  @media(max-width:720px){.values{grid-template-columns:1fr}}
-
-  /* ---- case studies ---- */
-  .case{
-    background:linear-gradient(180deg, var(--surface) 0%, rgba(20,29,46,.55) 100%);
-    border:1px solid var(--line);border-radius:16px;
-    padding:clamp(26px,4vw,40px);
-  }
-  .case + .case{margin-top:22px}
-  .case .tag{color:var(--gold)}
-  .case h3{font-size:clamp(22px,3.2vw,29px);font-weight:700;color:var(--ink);margin:14px 0 16px;max-width:22ch}
-  .case .ctx{color:var(--muted);max-width:var(--measure);margin-bottom:24px}
-  .case ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:26px}
-  .case li{position:relative;padding-left:26px;color:var(--ink);font-size:15.5px;line-height:1.55;max-width:var(--measure)}
-  .case li::before{content:"";position:absolute;left:2px;top:9px;width:9px;height:9px;border-radius:2px;
-    background:var(--green-dim);border:1px solid var(--green)}
-  .case li b{font-weight:600;color:var(--ink)}
-  .result{
-    display:flex;gap:14px;align-items:flex-start;
-    border-top:1px solid var(--line-soft);padding-top:22px;
-  }
-  .result .k{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--green);flex:none;padding-top:3px}
-  .result p{color:var(--ink);font-size:15.5px;line-height:1.55;max-width:60ch}
-  @media(max-width:620px){.result{flex-direction:column;gap:8px}}
-
-  /* ---- live demos ---- */
-  .demolede{margin-top:-20px;margin-bottom:32px;font-size:15.5px}
-  .demos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  @media(max-width:720px){.demos{grid-template-columns:1fr}}
-  .demo{background:var(--surface);border:1px solid var(--line);border-radius:14px;
-    padding:26px 24px;display:flex;flex-direction:column}
-  .demo .eyebrow{font-size:11.5px;color:var(--gold)}
-  .demo h3{font-size:20px;font-weight:700;color:var(--ink);margin:12px 0 10px}
-  .demo p{font-size:14.5px;color:var(--muted);line-height:1.55;flex:1}
-  .demo .links{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
-  .btn.sm{font-size:13px;padding:9px 15px}
-
-  /* ---- stack ---- */
-  .stackgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 40px}
-  @media(max-width:620px){.stackgrid{grid-template-columns:1fr}}
-  .stackgroup h4{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;letter-spacing:.12em;
-    text-transform:uppercase;color:var(--faint);margin-bottom:13px}
-  .tags{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted);
-    border:1px solid var(--line-soft);border-radius:7px;padding:5px 11px;background:var(--surface)}
-
-  /* ---- ethos / contact ---- */
-  .ethos{border-left:2px solid var(--green);padding:6px 0 6px 24px;max-width:var(--measure)}
-  .ethos p{font-family:"Archivo";font-weight:600;font-size:clamp(19px,2.6vw,24px);color:var(--ink);line-height:1.32;text-wrap:balance}
-  .contact{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:clamp(28px,4vw,44px);text-align:center}
-  .contact .eyebrow{display:block;margin-bottom:16px}
-  .contact h2{font-size:clamp(24px,4vw,34px);font-weight:800;color:var(--ink);max-width:20ch;margin:0 auto 16px}
-  .contact p{color:var(--muted);max-width:56ch;margin:0 auto 30px}
-  .contact .cta-row{justify-content:center;margin-top:0}
-  .note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--faint);margin-top:22px}
-
-  footer{padding:44px 0 60px;border-top:1px solid var(--line-soft);margin-top:20px}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
-  footer .sig{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted)}
-  footer .dot{color:var(--faint);margin:0 8px}
-
-  /* ---- reveal ---- */
-  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
-  .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-</style>
-</head>
-
-<body>
-<header class="hero">
-  <div class="wrap">
-    <div class="brandline">
-      <span class="monogram">SG</span>
-      <span class="brandname">Scott Garvin</span>
-    </div>
-    <p class="eyebrow">Full-Stack Engineer · .NET · Azure · AI-Native</p>
-    <h1>I take AI-built and MVP-stage apps to <span class="hl">production-grade.</span></h1>
-    <p class="lede">Senior full-stack engineer with 8+ years shipping software in regulated, security-sensitive domains — healthcare and fintech. I build with AI coding tools every day, and I build the guardrails that keep them honest.</p>
-    <div class="cta-row">
-      <a class="btn primary" href="https://youtu.be/AZqxNxQip4o" target="_blank" rel="noopener">Watch a 1-min intro <span class="arrow">→</span></a>
-      <a class="btn ghost" href="#contact">Start with an audit</a>
-    </div>
-  </div>
-</header>
-
-<section aria-label="What I do">
-  <div class="wrap reveal">
-    <div class="values">
-      <div class="value">
-        <h3>Rescue &amp; harden</h3>
-        <p>Auth and authorization, data integrity, test coverage, and security on AI-built and MVP-stage codebases — turning "works in the demo" into "safe in production."</p>
-      </div>
-      <div class="value">
-        <h3>Modernize</h3>
-        <p>Safely upgrade and re-architect live production systems — cloud runtimes, fragile pipelines, legacy frontends, untrustworthy CI — without downtime.</p>
-      </div>
-      <div class="value">
-        <h3>AI-native delivery</h3>
-        <p>Claude Code agents and reusable skills that let AI do real work on a specific codebase — fast, and without shipping subtly wrong changes.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section aria-label="Selected work">
-  <div class="wrap">
-    <div class="sec-head reveal"><h2>Selected work</h2></div>
-
-    <article class="case reveal">
-      <p class="eyebrow tag">Built &amp; own · Fintech / Lending</p>
-      <h3>A production lending platform, solo-built and operated</h3>
-      <p class="ctx">Sole architect of a full-stack lending-management platform — .NET 8 backend, Vue 3 SPA — running in production for about a year. It runs an entire lending operation: applications, active loans, payments, collections, and mandatory credit-bureau reporting.</p>
-      <ul>
-        <li><b>Clean architecture</b> in .NET 8 over SQL Server, a single well-mapped 100+ entity model, and a Vue 3 + TypeScript SPA with role-based access.</li>
-        <li>A <b>payments and amortization ledger</b> that deliberately separates source-of-truth payment records from cached schedule state — the classic place these systems silently drift.</li>
-        <li>A <b>collections system</b>: configurable reminder cadences, legal-notice tiers, field-visit logging, unified contact history, compliance opt-outs.</li>
-        <li><b>Regulatory credit-bureau reporting</b> driven by the official submission spec, transcribed into versioned specs with tests that guard against drift.</li>
-      </ul>
-      <div class="result">
-        <span class="k">Result</span>
-        <p>One engineer delivering domain breadth and architectural maturity that read like a small team's — in a regulated, money-handling context where mistakes are expensive.</p>
-      </div>
-    </article>
-
-    <article class="case reveal">
-      <p class="eyebrow tag">Client modernization · Healthcare</p>
-      <h3>Modernizing a live healthcare platform in place</h3>
-      <p class="ctx">Sole developer and architect for an established healthcare SaaS serving real clinics. I modernized a large legacy .NET codebase while the system stayed live for patients and staff — where "just rewrite it" is never an option.</p>
-      <ul>
-        <li>Migrated background jobs from a legacy <b>Azure Functions</b> runtime to the modern v4 isolated-worker model; hardened blob storage handling and observability.</li>
-        <li>Replaced fragile synchronous document generation with a <b>resilient async pipeline</b> — per-organization gating, a durable backstop that regenerates by replay, and real failure logging.</li>
-        <li>Introduced an <b>API-versioning foundation</b> and a modern <b>Vue</b> frontend replacing legacy server-rendered UI; de-flaked a legacy test suite into trustworthy CI.</li>
-        <li><b>Security &amp; supply chain</b>: authorization hardening, a production error gate, and automated dependency-vulnerability remediation.</li>
-      </ul>
-      <div class="result">
-        <span class="k">Result</span>
-        <p>A regulated production system modernized in place — with no disruption to the clinics and patients depending on it. Delivered solo, at team scope.</p>
-      </div>
-    </article>
-
-    <article class="case reveal">
-      <p class="eyebrow tag">AI-native · Tooling &amp; method</p>
-      <h3>Making AI agents work safely on production systems</h3>
-      <p class="ctx">The rare part isn't using AI — it's building the scaffolding that lets agents do real work on live, regulated systems without shipping subtly wrong changes. The gap is "can AI be <i>trusted</i> in this specific system," and closing it is engineering.</p>
-      <ul>
-        <li>A library of <b>~10 reusable, composable Claude Code skills</b> encoding a platform's operational, domain, and release knowledge — each a versioned playbook that teaches an agent one area correctly.</li>
-        <li>Every <b>production write is gated behind human confirmation</b>; database changes require forward and reverse migrations; nothing edits prod directly.</li>
-        <li><b>Verification methodology encoded</b> — the several ways a write can lie to you (200-but-invisible, 400-but-landed, read-after-write lag) — so neither I nor an agent files a confident wrong conclusion.</li>
-        <li>Operationalized agent workflows for investigation, PR review, migration verification, release notes, and orchestrated per-ticket QA.</li>
-      </ul>
-      <div class="result">
-        <span class="k">Principle</span>
-        <p>The rule in every skill: when something can't be verified from the artifact itself, say "can't determine — review this," never a confident guess. That's what makes AI safe in a serious domain.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section aria-label="Live demos">
-  <div class="wrap">
-    <div class="sec-head reveal"><h2>Live demos</h2></div>
-    <p class="lede demolede reveal">Public, self-contained demos you can click straight through — no signup, sample data only. Built solo, front-to-back.</p>
-    <div class="demos reveal">
-
-      <article class="demo">
-        <p class="eyebrow">AI support · Python + LangChain + Postgres</p>
-        <h3>Harbor: support with context</h3>
-        <p>A support workspace that retrieves help-center evidence and prepares cited replies for human review. Try drafting, editing, review, and simulated sending with fictional tickets. Live AI access uses OpenAI and Supabase with an invitation key, request limits, and a Docker deployment checked by GitHub Actions.</p>
-        <div class="links">
-          <a class="btn primary sm" href="https://harbor-production-8e7a.up.railway.app/" target="_blank" rel="noopener">Open demo <span class="arrow">→</span></a>
-          <a class="btn ghost sm" href="https://github.com/scott-garvin/scott-garvin.github.io/tree/main/projects/ai-support-copilot" target="_blank" rel="noopener">Code + architecture</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scott Garvin | Senior Full-Stack Engineer</title>
+    <meta
+      name="description"
+      content="Senior full-stack engineer building and modernizing healthcare and fintech software. Explore working AI products, architecture, security, and delivery examples."
+    />
+    <meta name="theme-color" content="#101714" />
+    <link rel="canonical" href="https://scott-garvin.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Scott Garvin | Senior Full-Stack Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Full-stack delivery. Practical AI. Software built to be maintained. Explore working products and the engineering behind them."
+    />
+    <meta property="og:url" content="https://scott-garvin.github.io/" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/portfolio.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="#" aria-label="Scott Garvin home"
+        ><span class="monogram" aria-hidden="true">sg.</span>Scott Garvin</a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#work">Work</a><a href="#experience">Experience</a
+        ><a href="#contact">Contact <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="intro-heading">
+        <div class="hero-copy">
+          <p class="eyebrow">Senior full-stack engineer</p>
+          <h1 id="intro-heading">
+            I build software.<br /><span>I own the delivery.</span>
+          </h1>
+          <p class="lead">
+            8+ years building and modernizing software in healthcare and
+            fintech. I work across the interface, backend, and infrastructure,
+            with responsibility for how it all fits together.
+          </p>
+          <p class="hero-note">
+            My recent public work puts AI into complete business workflows, with
+            source evidence, human review, and tested boundaries.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#work"
+              >Explore the work <span aria-hidden="true">↓</span></a
+            ><a class="text-link" href="mailto:sgarvin842@gmail.com"
+              >Get in touch <span aria-hidden="true">↗</span></a
+            >
+          </div>
         </div>
-      </article>
-
-      <article class="demo">
-        <p class="eyebrow">Clinic workflows · Vue + LangChain + Postgres</p>
-        <h3>Clera: scheduling and patient check-in</h3>
-        <p>Book and reschedule visits, invite a fictional patient into a scoped portal, and follow check-in through the staff schedule. AI proposes changes for review, while a LangChain guide explains kiosk steps from approved sources. Includes private demo sessions, a front-desk help queue, Docker deployment, and automated workflow tests. Synthetic data only.</p>
-        <div class="links">
-          <a class="btn primary sm" href="https://clera-production.up.railway.app/" target="_blank" rel="noopener">Open live demo <span class="arrow">→</span></a>
-          <a class="btn ghost sm" href="https://github.com/scott-garvin/clinic-scheduler" target="_blank" rel="noopener">Code</a>
-        </div>
-      </article>
-
-      <article class="demo">
-        <p class="eyebrow">AI workflows · Vue + TypeScript + Postgres</p>
-        <h3>Ledgerly: invoicing with reviewed AI intake</h3>
-        <p>Turn a work order into an invoice draft, review the source evidence, and track simulated payments. LangGraph saves progress through clarification and approval. Includes a private Postgres workspace, Docker deployment, and automated workflow tests.</p>
-        <div class="links">
-          <a class="btn primary sm" href="https://ledgerly-production-afee.up.railway.app/" target="_blank" rel="noopener">Open live demo <span class="arrow">→</span></a>
-          <a class="btn ghost sm" href="https://github.com/scott-garvin/invoice-dashboard" target="_blank" rel="noopener">Code</a>
-        </div>
-      </article>
-
-      <article class="demo">
-        <p class="eyebrow">Lending workflows · Vue + LangGraph + Postgres</p>
-        <h3>Origin: borrower intake and document review</h3>
-        <p>Invite a fictional borrower to submit documents, review AI-extracted facts with source quotes, and resolve conflicting income figures. LangGraph saves progress through clarification and human approval. Includes a private Postgres workspace, simulated decisions with an audit history, Docker deployment, and automated workflow tests. AI does not decide lending eligibility.</p>
-        <div class="links">
-          <a class="btn primary sm" href="https://origin-production-9ae1.up.railway.app/" target="_blank" rel="noopener">Open live demo <span class="arrow">→</span></a>
-          <a class="btn ghost sm" href="https://github.com/scott-garvin/loan-origination" target="_blank" rel="noopener">Code</a>
-        </div>
-      </article>
-
-      <article class="demo">
-        <p class="eyebrow">Security · Node / TypeScript + Postgres</p>
-        <h3>Invoice API — before / after hardening</h3>
-        <p>A deliberately vulnerable MVP API paired with its hardened rewrite: tenant isolation via Postgres row-level security, strict input validation against mass-assignment, and a full test suite running green in CI.</p>
-        <div class="links">
-          <a class="btn ghost sm" href="https://github.com/scott-garvin/invoice-api-hardening" target="_blank" rel="noopener">Code + tests <span class="arrow">→</span></a>
-        </div>
-      </article>
-
-      <article class="demo">
-        <p class="eyebrow">AI-native · Claude Code</p>
-        <h3>Claude Code guardrails</h3>
-        <p>Open-source, reusable Claude Code skills that keep AI agents honest on production systems — verify-before-claim, human-gated production writes, paired forward/reverse migrations, and release cutover.</p>
-        <div class="links">
-          <a class="btn ghost sm" href="https://github.com/scott-garvin/claude-code-guardrails" target="_blank" rel="noopener">View on GitHub <span class="arrow">→</span></a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<section aria-label="Stack">
-  <div class="wrap reveal">
-    <div class="sec-head"><h2>Stack</h2></div>
-    <div class="stackgrid">
-      <div class="stackgroup">
-        <h4>Languages &amp; frameworks</h4>
-        <div class="tags">
-          <span class="chip">C# / .NET 8</span><span class="chip">TypeScript</span><span class="chip">Vue</span>
-          <span class="chip">React</span><span class="chip">Node</span><span class="chip">SQL</span>
-        </div>
+        <aside class="profile-note" aria-label="Engineering background">
+          <span class="index-label">THE ENGINEERING BEHIND IT</span>
+          <div>
+            <strong>Full-stack ownership</strong>
+            <p>.NET, TypeScript, React / Vue, Python, and SQL.</p>
+          </div>
+          <div>
+            <strong>Production experience</strong>
+            <p>
+              Lending operations and the modernization of live healthcare
+              software.
+            </p>
+          </div>
+          <div>
+            <strong>Applied AI</strong>
+            <p>Retrieval, durable review workflows, and scoped MCP tools.</p>
+          </div>
+          <a class="text-link" href="https://github.com/scott-garvin"
+            >Explore GitHub <span aria-hidden="true">↗</span></a
+          >
+        </aside>
+      </section>
+      <div class="section-rule wrap">
+        <span>Architecture through deployment</span
+        ><span>.NET · TypeScript · Python · Azure · PostgreSQL</span>
       </div>
-      <div class="stackgroup">
-        <h4>Data</h4>
-        <div class="tags">
-          <span class="chip">SQL Server</span><span class="chip">Postgres</span><span class="chip">Supabase</span>
-          <span class="chip">EF Core</span><span class="chip">Dapper</span>
+      <section id="work" class="section wrap" aria-labelledby="work-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / Selected public work</p>
+            <h2 id="work-heading">
+              Working products.<br />Code you can inspect.
+            </h2>
+          </div>
+          <p>
+            Original portfolio projects with fictional data. Each demonstrates a
+            different engineering problem, from retrieval to multi-step review.
+          </p>
         </div>
-      </div>
-      <div class="stackgroup">
-        <h4>Cloud &amp; delivery</h4>
-        <div class="tags">
-          <span class="chip">Azure</span><span class="chip">Azure Functions</span><span class="chip">CI/CD</span>
-          <span class="chip">Clean architecture</span><span class="chip">Multi-tenant SaaS</span>
+        <div class="demo-notice">
+          <span aria-hidden="true">↳</span>
+          <p>
+            Open a demo to explore the interface.
+            <a
+              href="mailto:sgarvin842@gmail.com?subject=Portfolio%20demo%20access"
+              >Ask me for a demo key</a
+            >
+            to try the hosted AI workflows. Payments, messages, and decisions
+            are simulated.
+          </p>
         </div>
-      </div>
-      <div class="stackgroup">
-        <h4>AI-native</h4>
-        <div class="tags">
-          <span class="chip">Claude Code</span><span class="chip">Claude Skills</span>
-          <span class="chip">Anthropic API</span><span class="chip">OpenAI API</span><span class="chip">Security review</span>
+        <article class="project featured" aria-labelledby="harbor-heading">
+          <div class="project-copy">
+            <div class="project-top">
+              <span class="project-number">01</span
+              ><span class="category">AI support workspace</span>
+            </div>
+            <h3 id="harbor-heading">Harbor</h3>
+            <p class="project-summary">
+              Give support teams an answer they can check.
+            </p>
+            <p>
+              Retrieves help-center evidence and generates cited replies. A
+              person reviews and edits the draft before simulated sending.
+            </p>
+            <dl class="decision">
+              <dt>Engineering focus</dt>
+              <dd>
+                Keep retrieval, citation validation, and customer permissions in
+                the application, with provider secrets held on the server.
+              </dd>
+            </dl>
+            <ul class="tags" aria-label="Harbor technologies">
+              <li>Python / FastAPI</li>
+              <li>Next.js</li>
+              <li>LangChain</li>
+              <li>pgvector</li>
+            </ul>
+            <div class="project-links">
+              <a
+                class="button primary small"
+                href="https://harbor-production-8e7a.up.railway.app/"
+                >Open Harbor <span aria-hidden="true">↗</span></a
+              ><a
+                class="text-link"
+                href="https://github.com/scott-garvin/scott-garvin.github.io/tree/main/projects/ai-support-copilot"
+                >Code &amp; architecture <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </div>
+          <figure class="flow-panel">
+            <figcaption>
+              <span class="status-dot" aria-hidden="true"></span>Harbor /
+              Retrieval workflow
+            </figcaption>
+            <div class="flow-node">
+              <span>01 / QUESTION</span
+              ><strong>“What is the return policy?”</strong>
+            </div>
+            <div class="flow-connector" aria-hidden="true">↓</div>
+            <div class="flow-node">
+              <span>02 / RETRIEVE</span
+              ><strong>Relevant help-center passages</strong
+              ><small>PostgreSQL + vector similarity</small>
+            </div>
+            <div class="flow-connector" aria-hidden="true">↓</div>
+            <div class="flow-node">
+              <span>03 / GENERATE &amp; CHECK</span
+              ><strong>A draft linked to its sources</strong
+              ><small>Model response + citation validation</small>
+            </div>
+            <div class="flow-connector" aria-hidden="true">↓</div>
+            <div class="flow-node human">
+              <span>04 / HUMAN REVIEW</span
+              ><strong>Edit, approve, simulate sending</strong>
+            </div>
+          </figure>
+        </article>
+        <div class="project-grid">
+          <article class="project" aria-labelledby="ledgerly-heading">
+            <div class="project-top">
+              <span class="project-number">02</span
+              ><span class="category">Invoicing &amp; AI intake</span>
+            </div>
+            <h3 id="ledgerly-heading">Ledgerly</h3>
+            <p class="project-summary">
+              Turn a work order into a reviewed invoice.
+            </p>
+            <p>
+              Extract line items, resolve missing details, and approve a draft.
+              Track simulated payments in a private demo workspace.
+            </p>
+            <ol class="mini-flow" aria-label="Ledgerly workflow">
+              <li>Extract</li>
+              <li>Clarify</li>
+              <li>Approve</li>
+            </ol>
+            <dl class="decision">
+              <dt>Engineering focus</dt>
+              <dd>
+                LangGraph preserves review progress. Read-only MCP tools expose
+                invoices and receivables to an assistant.
+              </dd>
+            </dl>
+            <ul class="tags" aria-label="Ledgerly technologies">
+              <li>Vue / TypeScript</li>
+              <li>LangGraph</li>
+              <li>PostgreSQL</li>
+              <li>MCP</li>
+            </ul>
+            <div class="project-links">
+              <a
+                class="text-link"
+                href="https://ledgerly-production-afee.up.railway.app/"
+                >Open Ledgerly ↗</a
+              ><a
+                class="text-link secondary"
+                href="https://github.com/scott-garvin/invoice-dashboard"
+                >Code ↗</a
+              ><a
+                class="text-link secondary"
+                href="https://github.com/scott-garvin/invoice-dashboard/tree/main/mcp"
+                >MCP guide ↗</a
+              >
+            </div>
+          </article>
+          <article class="project" aria-labelledby="clera-heading">
+            <div class="project-top">
+              <span class="project-number">03</span
+              ><span class="category">Clinic operations</span>
+            </div>
+            <h3 id="clera-heading">Clera</h3>
+            <p class="project-summary">
+              Connect the appointment to the check-in.
+            </p>
+            <p>
+              Schedule visits, invite a fictional patient into a scoped portal,
+              and follow check-in from the staff workspace.
+            </p>
+            <ol class="mini-flow" aria-label="Clera workflow">
+              <li>Schedule</li>
+              <li>Check in</li>
+              <li>Assist</li>
+            </ol>
+            <dl class="decision">
+              <dt>Engineering focus</dt>
+              <dd>
+                A LangChain guide explains approved kiosk steps. MCP exposes
+                limited operational information. Synthetic data only; no
+                compliance certification claimed.
+              </dd>
+            </dl>
+            <ul class="tags" aria-label="Clera technologies">
+              <li>Vue / TypeScript</li>
+              <li>LangChain</li>
+              <li>PostgreSQL</li>
+              <li>MCP</li>
+            </ul>
+            <div class="project-links">
+              <a
+                class="text-link"
+                href="https://clera-production.up.railway.app/"
+                >Open Clera ↗</a
+              ><a
+                class="text-link secondary"
+                href="https://github.com/scott-garvin/clinic-scheduler"
+                >Code ↗</a
+              ><a
+                class="text-link secondary"
+                href="https://github.com/scott-garvin/clinic-scheduler/tree/main/mcp"
+                >MCP guide ↗</a
+              >
+            </div>
+          </article>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section aria-label="How I work">
-  <div class="wrap reveal">
-    <div class="ethos">
-      <p>Correctness over confidence. In regulated, money-handling systems, "looks fine" isn't good enough — so I ship tested, verifiable work, and I document what I build so you can maintain it.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact" aria-label="Contact">
-  <div class="wrap reveal">
-    <div class="contact">
-      <span class="eyebrow">Get started</span>
-      <h2>Start with a fixed-fee audit</h2>
-      <p>A scored production-readiness report and a prioritized fix roadmap in 2–3 days — the fee credits toward the work. From there, I build, harden, or modernize.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="mailto:sgarvin842@gmail.com">Message me <span class="arrow">→</span></a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/garvins84/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn ghost" href="https://www.upwork.com/freelancers/scottgarvin2" target="_blank" rel="noopener">Upwork</a>
-        <a class="btn ghost" href="https://github.com/scott-garvin" target="_blank" rel="noopener">GitHub</a>
-      </div>
-      <p class="note">Client work shown anonymized. Details on request under NDA.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <span class="sig">Scott Garvin</span>
-    <span class="sig">Full-Stack Engineer <span class="dot">·</span> .NET <span class="dot">·</span> Azure <span class="dot">·</span> AI-Native</span>
-  </div>
-</footer>
-
-<script>
-  (function(){
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var els = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
-    els.forEach(function(e){ io.observe(e); });
-  })();
-</script>
-</body>
+        <article class="project origin" aria-labelledby="origin-heading">
+          <div>
+            <div class="project-top">
+              <span class="project-number">04</span
+              ><span class="category"
+                >Borrower intake &amp; document review</span
+              >
+            </div>
+            <h3 id="origin-heading">Origin</h3>
+            <p class="project-summary">Make extracted facts reviewable.</p>
+            <p>
+              A fictional borrower submits documents. A reviewer checks source
+              quotes, resolves conflicting income figures, and approves the
+              extracted facts.
+            </p>
+            <div class="project-links">
+              <a
+                class="text-link"
+                href="https://origin-production-9ae1.up.railway.app/"
+                >Open Origin ↗</a
+              ><a
+                class="text-link secondary"
+                href="https://github.com/scott-garvin/loan-origination"
+                >Code &amp; architecture ↗</a
+              >
+            </div>
+          </div>
+          <div class="origin-detail">
+            <p class="index-label">THE IMPORTANT BOUNDARY</p>
+            <p>
+              AI extracts information. A person reviews it. AI does not decide
+              lending eligibility.
+            </p>
+            <ul class="tags" aria-label="Origin technologies">
+              <li>Vue / TypeScript</li>
+              <li>LangGraph</li>
+              <li>PostgreSQL</li>
+            </ul>
+            <p class="fine">
+              Saved workflow progress, private demo sessions, and an audit
+              history for simulated decisions.
+            </p>
+          </div>
+        </article>
+        <div class="repo-notes">
+          <p class="index-label">SMALLER ENGINEERING EXAMPLES</p>
+          <a href="https://github.com/scott-garvin/invoice-api-hardening"
+            ><div>
+              <h3>Invoice API hardening <span aria-hidden="true">↗</span></h3>
+              <p>
+                Compare vulnerable and hardened implementations. Inspect tenant
+                isolation, validation, and database-backed tests.
+              </p>
+            </div>
+            <span class="repo-label">Security / PostgreSQL RLS</span></a
+          ><a href="https://github.com/scott-garvin/claude-code-guardrails"
+            ><div>
+              <h3>Claude Code guardrails <span aria-hidden="true">↗</span></h3>
+              <p>
+                Reusable agent instructions and a worked review example, with an
+                explicit distinction between guidance and CI enforcement.
+              </p>
+            </div>
+            <span class="repo-label">Developer workflow / CI</span></a
+          >
+        </div>
+      </section>
+      <section
+        id="experience"
+        class="experience section"
+        aria-labelledby="experience-heading"
+      >
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">02 / Production experience</p>
+              <h2 id="experience-heading">Experience beyond<br />the demo.</h2>
+            </div>
+            <p>
+              Selected work from live systems. Descriptions are anonymized; the
+              public projects above are separate, original examples.
+            </p>
+          </div>
+          <div class="experience-grid">
+            <article>
+              <p class="index-label">FINTECH / BUILD &amp; OPERATE</p>
+              <h3>A lending platform,<br />from the ground up.</h3>
+              <p>
+                As sole architect, I built a .NET and Vue platform covering
+                applications, loans, payments, collections, and credit-bureau
+                reporting.
+              </p>
+              <ul>
+                <li>
+                  Designed the data model and role-based application
+                  architecture.
+                </li>
+                <li>
+                  Separated payment records from derived repayment schedules.
+                </li>
+                <li>
+                  Encoded reporting requirements in versioned specifications and
+                  tests.
+                </li>
+              </ul>
+              <p class="stack-line">C# / .NET · Vue · SQL Server</p>
+            </article>
+            <article>
+              <p class="index-label">HEALTHCARE / MODERNIZE IN PLACE</p>
+              <h3>Improve the system<br />people already depend on.</h3>
+              <p>
+                As sole developer and architect, I modernized an established
+                healthcare SaaS while it continued serving patients and staff.
+              </p>
+              <ul>
+                <li>Migrated Azure Functions to the isolated-worker model.</li>
+                <li>
+                  Reworked document generation into an asynchronous pipeline
+                  with recovery and failure logging.
+                </li>
+                <li>
+                  Improved API foundations, frontend architecture,
+                  authorization, and CI reliability.
+                </li>
+              </ul>
+              <p class="stack-line">.NET · Azure Functions · Vue · CI/CD</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section wrap" aria-labelledby="approach-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">03 / How I work</p>
+            <h2 id="approach-heading">
+              The details are<br />part of the delivery.
+            </h2>
+          </div>
+          <p>
+            I use AI coding tools in my daily work. I still own the
+            architecture, review, verification, and release.
+          </p>
+        </div>
+        <div class="practice-grid">
+          <div>
+            <span class="practice-number">01</span>
+            <h3>Make the boundary explicit.</h3>
+            <p>
+              Keep permissions and business rules in application code. Limit
+              what an AI workflow can read or change.
+            </p>
+          </div>
+          <div>
+            <span class="practice-number">02</span>
+            <h3>Test the actual workflow.</h3>
+            <p>
+              Check the database and browser behavior, including rejected
+              actions and recovery paths.
+            </p>
+          </div>
+          <div>
+            <span class="practice-number">03</span>
+            <h3>Leave a maintainable system.</h3>
+            <p>
+              Document the architecture, automate repeatable checks, and make
+              deployment reproducible.
+            </p>
+          </div>
+        </div>
+        <div class="skills-line">
+          <strong>Tools I work with</strong>
+          <p>
+            C# / .NET · TypeScript · Python / FastAPI · React / Next.js · Vue ·
+            SQL Server · PostgreSQL · Azure · Docker · GitHub Actions ·
+            LangChain · LangGraph · MCP
+          </p>
+        </div>
+      </section>
+      <section
+        id="contact"
+        class="contact-section wrap"
+        aria-labelledby="contact-heading"
+      >
+        <div>
+          <p class="eyebrow">04 / Get in touch</p>
+          <h2 id="contact-heading">
+            Have a role or<br />a product to discuss?
+          </h2>
+          <p>
+            I’m interested in senior engineering work with ownership across the
+            stack. For freelance projects, I can help build a product, modernize
+            an existing system, or get a stalled release moving.
+          </p>
+          <a class="button primary" href="mailto:sgarvin842@gmail.com"
+            >Email Scott <span aria-hidden="true">↗</span></a
+          >
+          <p class="email-address">sgarvin842@gmail.com</p>
+        </div>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/garvins84/"
+            >LinkedIn <span aria-hidden="true">↗</span></a
+          ><a href="https://github.com/scott-garvin"
+            >GitHub <span aria-hidden="true">↗</span></a
+          ><a href="https://youtu.be/AZqxNxQip4o"
+            >Watch my introduction <span aria-hidden="true">↗</span></a
+          ><a href="https://www.upwork.com/freelancers/scottgarvin2"
+            >Upwork <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="wrap">
+      <span>© 2026 Scott Garvin</span><span>Senior full-stack engineer</span
+      ><a href="#main">Back to top ↑</a>
+    </footer>
+  </body>
 </html>
