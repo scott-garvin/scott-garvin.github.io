@@ -1,6 +1,6 @@
 # Invite-only Harbor deployment
 
-Target: one Railway service for the static frontend and Python API, plus a dedicated Supabase Free database. The portfolio homepage remains on GitHub Pages. The Docker app and live OpenAI/Supabase flow have been verified locally; public hosting remains a release step. See validation.md for measured results.
+One Railway service hosts the static frontend and Python API, with a dedicated Supabase Free database. The portfolio homepage remains on GitHub Pages. The [public demo](https://harbor-production-8e7a.up.railway.app/) was verified on September 20, 2026, including an authenticated OpenAI/Supabase draft. See validation.md for measured results.
 
 ## 1. Supabase Free
 
@@ -33,9 +33,20 @@ MAX_LIVE_REQUESTS_PER_MONTH=200
 
 ## 3. Railway
 
-Connect the portfolio repository and select root directory `projects/ai-support-copilot`. Use this directory's `railway.toml` configuration (if a custom config path is required, select `/projects/ai-support-copilot/railway.toml`). The root Dockerfile builds an isolated static export and serves it through Python; a separate Node service is unnecessary.
+Connect the portfolio repository with access restricted to this repository. Configure the service in Railway Settings:
+
+- Root directory: `/projects/ai-support-copilot`.
+- Builder: Dockerfile; path: `/projects/ai-support-copilot/Dockerfile`.
+- Branch: `main`; enable **Wait for CI**.
+- Watch path: `/projects/ai-support-copilot/**`.
+- Healthcheck: `/api/health`; restart on failure, up to three retries.
+- Enable Serverless to stop the container while idle. Reviewers may experience a cold start.
+
+Railway no longer permits new services to opt into the legacy `railway.toml` configuration. The dashboard settings above describe this deployment. The Dockerfile builds an isolated static export and serves it through Python; a separate Node service is unnecessary.
 
 Set the backend variables above. Railway supplies PORT; startup binds to 0.0.0.0. The readiness path is `/api/health`, which checks process availability only, not database/model readiness. Generate a public HTTPS domain. Set platform spending controls too: the application's request quota does not cap hosting costs.
+
+The initial release uses Railway's trial credit, with no paid subscription selected. Trial credit is temporary; review the account's remaining credit and plan before promising ongoing availability. Supabase Free can also pause. Live drafting is limited globally to 20 attempts per UTC day and 200 per month; failed attempts count. The deployment was verified with Supabase's session pooler and the existing indexed corpus, without reindexing at startup.
 
 Do not authorize a paid plan until its displayed price and billing terms have been reviewed. The repository must be available to the selected Railway GitHub connection; unpublished local files are not deployable by GitHub integration.
 

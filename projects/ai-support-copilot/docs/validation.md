@@ -1,6 +1,6 @@
 # Harbor validation record
 
-Verified locally on September 20, 2026. No public deployment or remote GitHub Actions result is claimed.
+Verified locally and on Railway on September 20, 2026. The public deployment uses release commit `8c0d65b83e6814a504b790f040c60b0a98d2528a`.
 
 ## Completed checks
 
@@ -14,11 +14,17 @@ Verified locally on September 20, 2026. No public deployment or remote GitHub Ac
 | Container smoke | Static assets, sample tickets, retrieval, and cited draft passed |
 | Frontend dependency audit | No known vulnerabilities found |
 | Python locked-dependency audit | No known vulnerabilities found |
-| GitHub workflow/config YAML | Parsed successfully; remote execution pending |
+| GitHub Actions | Harbor checks and security workflows passed on the release PR; Harbor checks also passed on merged main |
 | Local credential scan | Current configured credentials absent from commit-eligible files and static export |
 | Real OpenAI/Supabase RAG probes | 4 of 4 passed |
 
 The local PostgreSQL tests used a disposable pgvector/pgvector:pg17 container, not the Supabase demo database. They exercise tenant filters, embedding-model mismatch, bounded parent expansion, and concurrent daily/monthly quota reservations.
+
+## Public deployment smoke check
+
+[Harbor on Railway](https://harbor-production-8e7a.up.railway.app/) serves the Dockerized UI and API over HTTPS. Health returned 200 in live mode. Public sample tickets returned 200; unauthenticated live tickets returned 401; authenticated live tickets returned four fictional records. A live reporting-access draft returned 200 with reporting-access and roles citations, 613 input tokens and 154 output tokens. An unsupported topic escalated with no citations or generation tokens. These checks are bounded smoke tests, not a general quality guarantee.
+
+The public browser workflow also completed sample drafting, human review, and simulated sending. No email was sent. Release CI evidence: [Harbor checks](https://github.com/scott-garvin/scott-garvin.github.io/actions/runs/35507301538) and [Harbor security](https://github.com/scott-garvin/scott-garvin.github.io/actions/runs/35507301570).
 
 The browser suite covers editing/review, search and unknown-topic handling, API failure recovery, memory-only demo keys, separate sample/live work, refresh/reload persistence, simulated sending, reopened tickets, reset confirmation, corrupted browser storage, isolation between independently opened tabs, and rejected provider-key input. Simulated sends never contact an email service. The final icon-only visual adjustment was also typechecked.
 

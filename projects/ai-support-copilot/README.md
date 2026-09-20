@@ -2,6 +2,8 @@
 
 A support workspace that retrieves help-center evidence, checks a ticket's customer account, and prepares a reply for human review. Built with **Next.js, TypeScript, Python/FastAPI, LangChain, and PostgreSQL/pgvector**. All companies, customers, policies, and tickets are fictional.
 
+[Open the hosted demo](https://harbor-production-8e7a.up.railway.app/). Sample mode is public; live AI requires an invitation key from Scott. The service may take a moment to wake after inactivity. All sending is simulated.
+
 ## What works
 
 - Responsive ticket queue with search, conversation view, editable drafts, source expansion, and an activity trace.
