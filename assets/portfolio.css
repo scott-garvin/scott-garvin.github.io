@@ -863,3 +863,24 @@ footer a {
     color: black;
   }
 }
+
+/* A full-width third case keeps the production examples balanced. */
+.experience-grid article.move-experience {
+  grid-column: 1 / -1;
+  border-left: 0;
+  border-top: 1px solid #bcc5b6;
+  padding: 36px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+}
+.move-experience ul {
+  margin-top: 0;
+}
+@media (max-width: 720px) {
+  .experience-grid article.move-experience {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 30px;
+  }
+}
