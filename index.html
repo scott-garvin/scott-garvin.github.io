@@ -427,8 +427,9 @@
                     upstream systems.
                   </li>
                   <li>
-                    Used background workers and an outbox to support document
-                    ingestion.
+                    When an order reaches the integration service, a background
+                    worker processes an outbox message and sends the order data
+                    to the document service to create its document folder.
                   </li>
                   <li>
                     Added test harnesses, Playwright and xUnit tests, GitHub
