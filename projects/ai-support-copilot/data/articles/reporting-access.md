@@ -1,0 +1,3 @@
+# Reporting access after a plan upgrade
+
+The reporting dashboard is available on Team and Enterprise plans. Starter does not include reporting. After upgrading, the workspace owner should sign out and sign back in to refresh the session, then confirm the correct workspace is selected. If reporting still shows upgrade required, an owner should open Settings > Billing and check that the Team subscription is active. If billing is active and a fresh session does not restore access, contact support with the workspace ID. Support must investigate entitlement synchronization; do not promise an automatic fix or a completion time.

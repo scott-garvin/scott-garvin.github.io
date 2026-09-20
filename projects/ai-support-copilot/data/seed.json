@@ -1,0 +1,14 @@
+{
+  "customers": [
+    {"id":"cust-northstar","tenant_id":"harbor-demo","name":"Jamie Chen","company":"Northstar Studio","plan":"Team","seats":12,"role":"Owner","billing_status":"Active"},
+    {"id":"cust-fieldwork","tenant_id":"harbor-demo","name":"Alex Rivera","company":"Fieldwork Co.","plan":"Starter","seats":3,"role":"Admin","billing_status":"Active"},
+    {"id":"cust-other","tenant_id":"other-workspace","name":"Private sample","company":"Isolation fixture","plan":"Enterprise","seats":90,"role":"Owner","billing_status":"Active"}
+  ],
+  "tickets": [
+    {"id":"HBR-1042","tenant_id":"harbor-demo","customer_id":"cust-northstar","customer":"Jamie Chen","company":"Northstar Studio","initials":"JC","subject":"Reporting is still locked after our upgrade","message":"We upgraded to Team yesterday, but the reporting dashboard still says upgrade required. I am the workspace owner. What should we try?","category":"Account access","priority":"High","time":"9:42 AM"},
+    {"id":"HBR-1043","tenant_id":"harbor-demo","customer_id":"cust-fieldwork","customer":"Alex Rivera","company":"Fieldwork Co.","initials":"AR","subject":"Need to export our project data","message":"We are doing a quarterly review. Can I export our project tasks as a CSV, and are completed tasks included?","category":"How-to","priority":"Normal","time":"10:06 AM"},
+    {"id":"HBR-1044","tenant_id":"harbor-demo","customer_id":"cust-northstar","customer":"Jamie Chen","company":"Northstar Studio","initials":"JC","subject":"Team invitation link has expired","message":"A teammate waited a few days to accept their invitation and the invite link has expired. How do I send another invitation?","category":"Account access","priority":"Normal","time":"10:18 AM"},
+    {"id":"HBR-1045","tenant_id":"harbor-demo","customer_id":"cust-fieldwork","customer":"Alex Rivera","company":"Fieldwork Co.","initials":"AR","subject":"A question outside the help center","message":"Does Harbor offer quantum satellite synchronization?","category":"Needs investigation","priority":"Normal","time":"10:31 AM"},
+    {"id":"OTHER-1","tenant_id":"other-workspace","customer_id":"cust-other","customer":"Private sample","company":"Isolation fixture","initials":"PS","subject":"Private ticket","message":"This must never be visible in harbor-demo.","category":"Private","priority":"Normal","time":"11:00 AM"}
+  ]
+}
