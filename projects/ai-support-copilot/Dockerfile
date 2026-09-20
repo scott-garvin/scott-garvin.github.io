@@ -1,4 +1,4 @@
-FROM node:22-bookworm-slim AS web
+FROM node:25-bookworm-slim AS web
 WORKDIR /web
 RUN npm install --global pnpm@11.19.0
 COPY frontend/package.json frontend/pnpm-lock.yaml ./
