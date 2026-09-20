@@ -1,0 +1,9 @@
+name: Harbor analysis
+paths:
+  - projects/ai-support-copilot/backend
+  - projects/ai-support-copilot/frontend/src
+paths-ignore:
+  - '**/node_modules/**'
+  - '**/.static-build/**'
+queries:
+  - uses: security-extended

@@ -1,0 +1,88 @@
+name: Harbor checks
+on:
+  workflow_dispatch:
+  push:
+    paths: ["projects/ai-support-copilot/**", ".github/**"]
+  pull_request:
+    paths: ["projects/ai-support-copilot/**", ".github/**"]
+permissions:
+  contents: read
+concurrency:
+  group: harbor-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      APP_MODE: sample
+      MAX_REQUESTS_PER_MINUTE: 100
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: harbor
+          POSTGRES_PASSWORD: ci-test-only
+          POSTGRES_DB: harbor_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U harbor -d harbor_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    defaults:
+      run:
+        working-directory: projects/ai-support-copilot
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+          cache-dependency-path: projects/ai-support-copilot/frontend/pnpm-lock.yaml
+      - run: pip install -r backend/requirements.lock && pip install --no-deps -e backend
+      - run: python -m pip check
+      - run: python -m ruff check backend/app backend/tests evals scripts
+      - run: python -m pytest backend/tests -q --junitxml=test-results/backend.xml
+        env:
+          TEST_DATABASE_URL: postgresql://harbor:ci-test-only@localhost:5432/harbor_test
+      - run: python evals/run.py
+      - run: pnpm --dir frontend install --frozen-lockfile
+      - run: pnpm --dir frontend typecheck
+      - run: pnpm --dir frontend exec playwright install --with-deps chromium
+      - name: Build the deployable image without secrets
+        run: docker build -t harbor-ci .
+      - name: Start isolated sample demo
+        run: |
+          docker run -d --name harbor-ci -p 127.0.0.1:3001:8000 -e APP_MODE=sample -e MAX_REQUESTS_PER_MINUTE=100 harbor-ci
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:3001/api/health; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: Smoke test deployable container
+        run: python scripts/smoke.py
+      - name: Full desktop and mobile workflow (no paid calls)
+        run: pnpm --dir frontend test:e2e
+        env:
+          E2E_BASE_URL: http://127.0.0.1:3001
+      - name: Container diagnostics
+        if: failure()
+        run: docker logs --tail=100 harbor-ci
+      - name: Stop test containers
+        if: always()
+        run: docker stop harbor-ci || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: retrieval-evaluation
+          path: |
+            projects/ai-support-copilot/eval-results.json
+            projects/ai-support-copilot/test-results/
+            projects/ai-support-copilot/frontend/playwright-report/
+            projects/ai-support-copilot/frontend/test-results/
+          retention-days: 14
