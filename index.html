@@ -6,7 +6,7 @@
     <title>Scott Garvin | Senior Full-Stack Engineer</title>
     <meta
       name="description"
-      content="Senior full-stack engineer building and modernizing healthcare and fintech software. Explore working AI products, architecture, security, and delivery examples."
+      content="Senior full-stack engineer delivering React and .NET applications, integrations, and production releases across healthcare, logistics, and fintech."
     />
     <meta name="theme-color" content="#101714" />
     <link rel="canonical" href="https://scott-garvin.github.io/" />
@@ -17,11 +17,11 @@
     />
     <meta
       property="og:description"
-      content="Full-stack delivery. Practical AI. Software built to be maintained. Explore working products and the engineering behind them."
+      content="React and .NET delivery across logistics, healthcare, and lending. Production systems, integrations, and the engineering behind them."
     />
     <meta property="og:url" content="https://scott-garvin.github.io/" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/portfolio.css" />
+    <link rel="stylesheet" href="assets/portfolio.css?v=20261005c" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -30,7 +30,7 @@
         ><span class="monogram" aria-hidden="true">sg.</span>Scott Garvin</a
       >
       <nav aria-label="Main navigation">
-        <a href="#work">Work</a><a href="#experience">Experience</a
+        <a href="#experience">Experience</a><a href="#work">Work</a
         ><a href="#contact">Contact <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
@@ -42,17 +42,17 @@
             I build software.<br /><span>I own the delivery.</span>
           </h1>
           <p class="lead">
-            8+ years building and modernizing software in healthcare and
-            fintech. I work across the interface, backend, and infrastructure,
+            8+ years building and modernizing software in healthcare, logistics,
+            and fintech. I work across the interface, backend, and infrastructure,
             with responsibility for how it all fits together.
           </p>
           <p class="hero-note">
-            My recent public work puts AI into complete business workflows, with
-            source evidence, human review, and tested boundaries.
+            Recent work includes a React/.NET logistics rewrite, patient payments
+            and EHR integrations, and the release processes behind them.
           </p>
           <div class="actions">
-            <a class="button primary" href="#work"
-              >Explore the work <span aria-hidden="true">↓</span></a
+            <a class="button primary" href="#experience"
+              >Explore my experience <span aria-hidden="true">↓</span></a
             ><a class="text-link" href="mailto:sgarvin842@gmail.com"
               >Get in touch <span aria-hidden="true">↗</span></a
             >
@@ -62,7 +62,7 @@
           <span class="index-label">THE ENGINEERING BEHIND IT</span>
           <div>
             <strong>Full-stack ownership</strong>
-            <p>.NET, TypeScript, React / Vue, Python, and SQL.</p>
+            <p>ASP.NET Core / MVC, TypeScript, React / Vue, Python, and SQL.</p>
           </div>
           <div>
             <strong>Production experience</strong>
@@ -84,10 +84,138 @@
         <span>Architecture through deployment</span
         ><span>.NET · TypeScript · Python · Azure · PostgreSQL</span>
       </div>
+      <section
+        id="experience"
+        class="experience section"
+        aria-labelledby="experience-heading"
+      >
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">01 / Production experience</p>
+              <h2 id="experience-heading">Production work.</h2>
+            </div>
+            <p>
+              Selected work from live systems. Client names are omitted. The
+              public projects below are separate, original examples.
+            </p>
+          </div>
+          <div class="experience-grid">
+            <article class="move-experience">
+              <div>
+                <p class="index-label">
+                  LOGISTICS / ARCHITECTURE &amp; DELIVERY
+                </p>
+                <h3>
+                  A move-management platform,<br />built around the operational
+                  workflow.
+                </h3>
+                <p>
+                  I designed the .NET microservice architecture for an internal
+                  move-management platform and worked with the team to bring it
+                  into production. My work covered service boundaries,
+                  integrations, the React interface, deployment, and production
+                  safeguards.
+                </p>
+                <p class="stack-line">
+                  C# / .NET · React · PostgreSQL · Terraform · Docker
+                </p>
+              </div>
+              <div>
+                <ul>
+                  <li>
+                    Built the React document-management UI and supporting APIs,
+                    with search, pagination, loading and error states, and safer
+                    uploads using idempotency keys and Blob cleanup.
+                  </li>
+                  <li>
+                    Connected business workflows to NetSuite and Azure AD B2C;
+                    set data conventions and generated TypeScript API clients
+                    from OpenAPI definitions.
+                  </li>
+                  <li>
+                    Established shared API error handling and observability so
+                    production failures could be traced across backend and
+                    frontend.
+                  </li>
+                  <li>
+                    Added GitHub Actions checks, security and dependency
+                    scanning, automated tests, and post-deployment verification
+                    to catch broken releases.
+                  </li>
+                </ul>
+              </div>
+            </article>
+            <article>
+              <p class="index-label">HEALTHCARE / MODERNIZE IN PLACE</p>
+              <h3>Patient payments and<br />integrations in a live platform.</h3>
+              <p>
+                I delivered features and modernization work on a
+                patient-engagement platform already serving patients and staff.
+                I worked across .NET services, Vue interfaces, Azure, testing,
+                and production releases.
+              </p>
+              <ul>
+                <li>
+                  Built pay-by-link payments from patient search and consent
+                  checks through card entry, receipts, and reconciliation across
+                  location-specific gateways.
+                </li>
+                <li>
+                  Built an EHR integration for demographics, insurance, and
+                  clinical data, with outage handling, tenant scoping, and
+                  encounter deduplication to protect data correctness.
+                </li>
+                <li>
+                  Moved document rendering to an asynchronous Azure Functions
+                  service with Blob storage, recovery, and failure logging.
+                </li>
+                <li>
+                  Owned automated tests and releases, including controlled
+                  production slot swaps, post-deployment checks, and SQL rollback
+                  procedures.
+                </li>
+              </ul>
+              <p class="stack-line">C# / .NET · Vue · Azure · SQL Server</p>
+            </article>
+            <article>
+              <p class="index-label">FINTECH / BUILD &amp; OPERATE</p>
+              <h3>A lending platform,<br />from the ground up.</h3>
+              <p>
+                I was the sole architect for a .NET and Vue platform covering
+                applications, loans, payments, collections, and credit-bureau
+                reporting. The financial records had to stay consistent as
+                lending rules changed.
+              </p>
+              <ul>
+                <li>
+                  Moved rates, fees, terms, and schedules into admin-editable
+                  configuration so routine changes did not require a deployment.
+                </li>
+                <li>
+                  Used effective-dated values and kept payment records separate
+                  from derived schedules, protecting prior billing when terms
+                  changed.
+                </li>
+                <li>
+                  Built balance-to-ledger reconciliation and automated financial
+                  tests to catch drift in customer-facing balances.
+                </li>
+                <li>
+                  Designed role-based workflows across servicing and collections,
+                  and versioned credit-bureau requirements in specifications and
+                  tests.
+                </li>
+              </ul>
+              <p class="stack-line">C# / .NET · Vue · SQL Server</p>
+            </article>
+          </div>
+        </div>
+      </section>
       <section id="work" class="section wrap" aria-labelledby="work-heading">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">01 / Selected public work</p>
+            <p class="eyebrow">02 / Selected public work</p>
             <h2 id="work-heading">
               Working products.<br />Code you can inspect.
             </h2>
@@ -340,107 +468,6 @@
           >
         </div>
       </section>
-      <section
-        id="experience"
-        class="experience section"
-        aria-labelledby="experience-heading"
-      >
-        <div class="wrap">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">02 / Production experience</p>
-              <h2 id="experience-heading">Experience beyond<br />the demo.</h2>
-            </div>
-            <p>
-              Selected work from live systems. Descriptions are anonymized; the
-              public projects above are separate, original examples.
-            </p>
-          </div>
-          <div class="experience-grid">
-            <article>
-              <p class="index-label">FINTECH / BUILD &amp; OPERATE</p>
-              <h3>A lending platform,<br />from the ground up.</h3>
-              <p>
-                As sole architect, I built a .NET and Vue platform covering
-                applications, loans, payments, collections, and credit-bureau
-                reporting.
-              </p>
-              <ul>
-                <li>
-                  Designed the data model and role-based application
-                  architecture.
-                </li>
-                <li>
-                  Separated payment records from derived repayment schedules.
-                </li>
-                <li>
-                  Encoded reporting requirements in versioned specifications and
-                  tests.
-                </li>
-              </ul>
-              <p class="stack-line">C# / .NET · Vue · SQL Server</p>
-            </article>
-            <article>
-              <p class="index-label">HEALTHCARE / MODERNIZE IN PLACE</p>
-              <h3>Improve the system<br />people already depend on.</h3>
-              <p>
-                As sole developer and architect, I modernized an established
-                healthcare SaaS while it continued serving patients and staff.
-              </p>
-              <ul>
-                <li>Migrated Azure Functions to the isolated-worker model.</li>
-                <li>
-                  Reworked document generation into an asynchronous pipeline
-                  with recovery and failure logging.
-                </li>
-                <li>
-                  Improved API foundations, frontend architecture,
-                  authorization, and CI reliability.
-                </li>
-              </ul>
-              <p class="stack-line">.NET · Azure Functions · Vue · CI/CD</p>
-            </article>
-            <article class="move-experience">
-              <div>
-                <p class="index-label">
-                  LOGISTICS / ARCHITECTURE &amp; DELIVERY
-                </p>
-                <h3>
-                  A move-management platform,<br />built around the operational
-                  workflow.
-                </h3>
-                <p>
-                  I designed the microservice architecture for an internal
-                  move-management platform now in production. I worked with a
-                  team to implement the system, which tracks opportunities,
-                  estimates, and sales orders.
-                </p>
-                <p class="stack-line">
-                  C# / .NET · React · PostgreSQL · Terraform · Docker
-                </p>
-              </div>
-              <div>
-                <ul>
-                  <li>
-                    Separated document, order, and communication services, with
-                    a central integration service receiving reference data from
-                    upstream systems.
-                  </li>
-                  <li>
-                    When an order reaches the integration service, a background
-                    worker processes an outbox message and sends the order data
-                    to the document service to create its document folder.
-                  </li>
-                  <li>
-                    Added test harnesses, Playwright and xUnit tests, GitHub
-                    Actions, and SonarQube analysis.
-                  </li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
       <section class="section wrap" aria-labelledby="approach-heading">
         <div class="section-heading">
           <div>
@@ -450,17 +477,18 @@
             </h2>
           </div>
           <p>
-            I use AI coding tools in my daily work. I still own the
-            architecture, review, verification, and release.
+            I design the system, build across the stack, and stay with it
+            through release and production support. I use AI coding tools and
+            review what they produce.
           </p>
         </div>
         <div class="practice-grid">
           <div>
             <span class="practice-number">01</span>
-            <h3>Make the boundary explicit.</h3>
+            <h3>Keep business rules explicit.</h3>
             <p>
-              Keep permissions and business rules in application code. Limit
-              what an AI workflow can read or change.
+              Keep permissions, calculations, and workflow states in application
+              code where they can be tested and reviewed.
             </p>
           </div>
           <div>
@@ -473,18 +501,18 @@
           </div>
           <div>
             <span class="practice-number">03</span>
-            <h3>Leave a maintainable system.</h3>
+            <h3>Make releases repeatable.</h3>
             <p>
-              Document the architecture, automate repeatable checks, and make
-              deployment reproducible.
+              Document the architecture, automate checks, and verify the
+              deployment in the live environment.
             </p>
           </div>
         </div>
         <div class="skills-line">
           <strong>Tools I work with</strong>
           <p>
-            C# / .NET · TypeScript · Python / FastAPI · React / Next.js · Vue ·
-            SQL Server · PostgreSQL · Azure · Docker · GitHub Actions ·
+            C# / ASP.NET Core / MVC · React · TypeScript · SQL Server · PostgreSQL ·
+            Azure · Docker · Terraform · GitHub Actions · Vue · Python / FastAPI ·
             LangChain · LangGraph · MCP
           </p>
         </div>
