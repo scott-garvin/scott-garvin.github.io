@@ -6,7 +6,7 @@ RUN pnpm install --frozen-lockfile
 COPY frontend/ ./
 RUN pnpm build:demo
 
-FROM python:3.12-slim
+FROM python:3.14-slim
 WORKDIR /project
 COPY backend/ ./backend/
 COPY data/ ./data/
